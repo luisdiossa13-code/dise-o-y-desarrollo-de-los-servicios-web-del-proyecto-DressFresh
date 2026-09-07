@@ -152,3 +152,5 @@ pasarela contratada (Stripe, PayU, Wompi, etc.) usando `PAYMENT_GATEWAY_KEY`.
 ## 9. Control de versiones
 
 Este proyecto se versiona con **Git**. Rama principal: `main`.
+
+**Repositorio:** https://github.com/luisdiossa13-code/dise-o-y-desarrollo-de-los-servicios-web-del-proyecto-DressFresh
