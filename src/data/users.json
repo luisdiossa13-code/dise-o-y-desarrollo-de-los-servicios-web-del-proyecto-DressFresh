@@ -1,0 +1,26 @@
+[
+  {
+    "id": "usr-12dbbc38-6776-4e46-a945-cf993eb49182",
+    "name": "Administrador",
+    "email": "admin@modatrends.com",
+    "password": "$2a$10$uuaGAU.7G.aceqpREOhuiepEB7MBB7SBxvmQOBs66qLqzrKeBdsw.",
+    "role": "admin",
+    "phone": "+57 300 000 0000",
+    "address": "Oficina principal",
+    "active": true,
+    "createdAt": "2026-09-07T01:06:07.030Z",
+    "updatedAt": "2026-09-07T01:06:07.031Z"
+  },
+  {
+    "id": "usr-9dc33cbc-e056-425e-ba88-e820df6b7019",
+    "name": "Cliente Demo",
+    "email": "cliente@modatrends.com",
+    "password": "$2a$10$gedUmsSkdn49PPoSD5.jZu5RcNuVnlW0GkgHXOT4s2YqY06kfPbZ.",
+    "role": "cliente",
+    "phone": "+57 311 111 1111",
+    "address": "Calle 10 # 5-20",
+    "active": true,
+    "createdAt": "2026-09-07T01:06:07.033Z",
+    "updatedAt": "2026-09-07T01:06:07.033Z"
+  }
+]

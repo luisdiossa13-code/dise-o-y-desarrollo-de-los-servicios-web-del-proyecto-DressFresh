@@ -1,0 +1,35 @@
+{
+  "name": "tienda-ropa-api",
+  "version": "1.0.0",
+  "description": "API REST para tienda de ropa en línea. Proyecto Formativo AA5 - Construcción de APIs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/db/seed.js",
+    "reset": "node src/db/seed.js --reset"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "express",
+    "ecommerce",
+    "tienda-ropa",
+    "swagger"
+  ],
+  "author": "Luis Diossa",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

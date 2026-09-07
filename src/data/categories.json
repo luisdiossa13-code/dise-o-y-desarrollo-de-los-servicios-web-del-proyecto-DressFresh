@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cat-fa830966-38df-4c24-acd5-f4e17e15c7fc",
+    "createdAt": "2026-09-07T01:06:07.035Z",
+    "updatedAt": "2026-09-07T01:06:07.035Z",
+    "name": "Camisetas",
+    "slug": "camisetas",
+    "description": "Camisetas básicas y de moda para toda la familia",
+    "image": "https://picsum.photos/seed/camiseta/600/400",
+    "active": true
+  },
+  {
+    "id": "cat-1be21572-aca1-4f19-8723-23054f9c8720",
+    "createdAt": "2026-09-07T01:06:07.037Z",
+    "updatedAt": "2026-09-07T01:06:07.037Z",
+    "name": "Pantalones",
+    "slug": "pantalones",
+    "description": "Jeans, pantalones de vestir y casuales",
+    "image": "https://picsum.photos/seed/pantalon/600/400",
+    "active": true
+  },
+  {
+    "id": "cat-52b20c96-6aba-488d-9a6a-e5582e658f7c",
+    "createdAt": "2026-09-07T01:06:07.039Z",
+    "updatedAt": "2026-09-07T01:06:07.039Z",
+    "name": "Vestidos",
+    "slug": "vestidos",
+    "description": "Vestidos para todas las ocasiones",
+    "image": "https://picsum.photos/seed/vestido/600/400",
+    "active": true
+  },
+  {
+    "id": "cat-57d87f59-09f5-45ff-a021-02749dde0e28",
+    "createdAt": "2026-09-07T01:06:07.042Z",
+    "updatedAt": "2026-09-07T01:06:07.042Z",
+    "name": "Chaquetas",
+    "slug": "chaquetas",
+    "description": "Chaquetas y abrigos para cualquier clima",
+    "image": "https://picsum.photos/seed/chaqueta/600/400",
+    "active": true
+  },
+  {
+    "id": "cat-9477ac39-f54b-4876-a64e-65d6ff3379e1",
+    "createdAt": "2026-09-07T01:06:07.044Z",
+    "updatedAt": "2026-09-07T01:06:07.044Z",
+    "name": "Zapatos",
+    "slug": "zapatos",
+    "description": "Calzado deportivo, formal y casual",
+    "image": "https://picsum.photos/seed/zapato/600/400",
+    "active": true
+  },
+  {
+    "id": "cat-d084a9fd-b73f-475b-b4eb-918efc7d2ce9",
+    "createdAt": "2026-09-07T01:06:07.046Z",
+    "updatedAt": "2026-09-07T01:06:07.046Z",
+    "name": "Accesorios",
+    "slug": "accesorios",
+    "description": "Gorras, gafas, cinturones y más",
+    "image": "https://picsum.photos/seed/accesorio/600/400",
+    "active": true
+  }
+]

@@ -1,0 +1,238 @@
+[
+  {
+    "id": "prd-0da15065-6250-4b5e-8931-069cca268a97",
+    "slug": "camiseta-b-sica-algod-n",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/camiseta-b-sica-algod-n/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.048Z",
+    "updatedAt": "2026-09-07T01:06:07.048Z",
+    "name": "Camiseta Básica Algodón",
+    "brand": "Moda Trends",
+    "price": 49900,
+    "oldPrice": 59900,
+    "stock": 50,
+    "description": "Camiseta de algodón peinado 100%, corte clásico y cómodo. Ideal para el uso diario.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Blanco",
+      "Negro",
+      "Gris"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-505a36dc-514a-4b79-a190-7377a0fdf05d",
+    "slug": "camiseta-deportiva-dry-fit",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/camiseta-deportiva-dry-fit/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.050Z",
+    "updatedAt": "2026-09-07T01:06:07.050Z",
+    "name": "Camiseta Deportiva Dry Fit",
+    "brand": "SportLine",
+    "price": 65900,
+    "oldPrice": 79900,
+    "stock": 35,
+    "description": "Tejido transpirable de secado rápido, perfecta para entrenar.",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Azul",
+      "Rojo",
+      "Negro"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-75856a14-7d33-42e0-89b5-6aea65c729be",
+    "slug": "jeans-c-nico-hombre",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/jeans-c-nico-hombre/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.053Z",
+    "updatedAt": "2026-09-07T01:06:07.053Z",
+    "name": "Jeans Cónico Hombre",
+    "brand": "Urban",
+    "price": 129900,
+    "oldPrice": 159900,
+    "stock": 40,
+    "description": "Jeans de corte cónico con ajuste perfecto y tela stretch.",
+    "sizes": [
+      "28",
+      "30",
+      "32",
+      "34",
+      "36"
+    ],
+    "colors": [
+      "Azul Claro",
+      "Azul Oscuro",
+      "Negro"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-2b4ad5ad-6bb4-49c6-84b5-285300926bff",
+    "slug": "vestido-floral-verano",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/vestido-floral-verano/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.056Z",
+    "updatedAt": "2026-09-07T01:06:07.056Z",
+    "name": "Vestido Floral Verano",
+    "brand": "Bella Moda",
+    "price": 149900,
+    "oldPrice": 179900,
+    "stock": 25,
+    "description": "Vestido largo con estampado floral, tela ligera ideal para el verano.",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Multicolor",
+      "Rosado"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-6132f200-973f-4e30-be3f-1e4c827591b5",
+    "slug": "chaqueta-jean-cl-sica",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/chaqueta-jean-cl-sica/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.061Z",
+    "updatedAt": "2026-09-07T01:06:07.061Z",
+    "name": "Chaqueta Jean Clásica",
+    "brand": "Urban",
+    "price": 199900,
+    "oldPrice": 239900,
+    "stock": 20,
+    "description": "Chaqueta en jean desgastado, un clásico que nunca pasa de moda.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Azul",
+      "Gris"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-42140fbc-9199-4a3f-a05a-1ebb2021b795",
+    "slug": "tenis-urbanos-unisex",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/tenis-urbanos-unisex/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.064Z",
+    "updatedAt": "2026-09-07T01:06:07.064Z",
+    "name": "Tenis Urbanos Unisex",
+    "brand": "Step",
+    "price": 219900,
+    "oldPrice": 249900,
+    "stock": 30,
+    "description": "Tenis casuales con suela antideslizante y diseño moderno.",
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      "Blanco",
+      "Negro",
+      "Gris"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-a6409312-0810-4f30-9aa3-752a9c18b860",
+    "slug": "gorra-trucker",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/gorra-trucker/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.067Z",
+    "updatedAt": "2026-09-07T01:06:07.067Z",
+    "name": "Gorra Trucker",
+    "brand": "Moda Trends",
+    "price": 39900,
+    "oldPrice": 49900,
+    "stock": 60,
+    "description": "Gorra estilo trucker con cierre ajustable y bordado frontal.",
+    "sizes": [
+      "Única"
+    ],
+    "colors": [
+      "Negro",
+      "Rojo",
+      "Azul"
+    ],
+    "active": true
+  },
+  {
+    "id": "prd-c0cd2ae6-09b4-4b18-8517-3262a026cab3",
+    "slug": "blusa-manga-larga",
+    "categoryId": null,
+    "images": [
+      "https://picsum.photos/seed/blusa-manga-larga/600/800"
+    ],
+    "rating": 4.5,
+    "numReviews": 0,
+    "createdAt": "2026-09-07T01:06:07.070Z",
+    "updatedAt": "2026-09-07T01:06:07.070Z",
+    "name": "Blusa Manga Larga",
+    "brand": "Bella Moda",
+    "price": 89900,
+    "oldPrice": 109900,
+    "stock": 28,
+    "description": "Blusa de manga larga con diseño elegante para oficina o salidas.",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Blanca",
+      "Beige",
+      "Negra"
+    ],
+    "active": true
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "off-e8a37ac4-924b-4a59-941a-1080b09e5ab0",
+    "createdAt": "2026-09-07T01:06:07.071Z",
+    "updatedAt": "2026-09-07T01:06:07.071Z",
+    "title": "Semana de la Moda - 20% OFF",
+    "description": "20% de descuento en toda la tienda por tiempo limitado.",
+    "discountPercent": 20,
+    "scopeType": "global",
+    "scopeValue": null,
+    "active": true,
+    "startsAt": "2026-01-01T00:00:00.000Z",
+    "endsAt": "2026-12-31T23:59:59.999Z"
+  },
+  {
+    "id": "off-89f0b97a-d11a-4f1e-a920-3c0a3b281aeb",
+    "createdAt": "2026-09-07T01:06:07.073Z",
+    "updatedAt": "2026-09-07T01:06:07.073Z",
+    "title": "Liquidación Jeans",
+    "description": "30% de descuento en todos los jeans.",
+    "discountPercent": 30,
+    "scopeType": "category",
+    "scopeValue": "pantalones",
+    "active": true,
+    "startsAt": "2026-01-01T00:00:00.000Z",
+    "endsAt": "2026-12-31T23:59:59.999Z"
+  }
+]

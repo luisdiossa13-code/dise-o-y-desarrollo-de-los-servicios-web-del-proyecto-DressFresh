@@ -1,0 +1,76 @@
+[
+  {
+    "id": "config",
+    "storeName": "Moda Trends",
+    "slogan": "Tu estilo, nuestra pasión",
+    "email": "contacto@modatrends.com",
+    "phone": "+57 300 123 4567",
+    "whatsapp": "https://wa.me/573001234567",
+    "address": "Av. Siempre Viva 123, Bogotá",
+    "city": "Bogotá",
+    "currency": "COP",
+    "announcement": "Envío gratis por compras superiores a $200.000",
+    "socialNetworks": [
+      {
+        "id": "bd4b51cc-907f-4ba9-adc1-292cd4c648d9",
+        "name": "Facebook",
+        "url": "https://facebook.com/modatrends",
+        "icon": "facebook",
+        "active": true
+      },
+      {
+        "id": "60f1f523-a9ff-4f75-8a6e-7f1f01d01754",
+        "name": "Instagram",
+        "url": "https://instagram.com/modatrends",
+        "icon": "instagram",
+        "active": true
+      },
+      {
+        "id": "04fa30dc-2818-436f-bf88-a951a2fb9a26",
+        "name": "X (Twitter)",
+        "url": "https://x.com/modatrends",
+        "icon": "twitter",
+        "active": true
+      },
+      {
+        "id": "d5258b7b-2c6f-42e9-bd9c-d9990456a782",
+        "name": "TikTok",
+        "url": "https://tiktok.com/@modatrends",
+        "icon": "tiktok",
+        "active": true
+      },
+      {
+        "id": "35bf913d-ee81-4d0b-a5d3-6e16957654e7",
+        "name": "YouTube",
+        "url": "https://youtube.com/@modatrends",
+        "icon": "youtube",
+        "active": true
+      },
+      {
+        "id": "565296f5-c2bd-4f4c-a6c3-2b2d5855914d",
+        "name": "WhatsApp",
+        "url": "https://wa.me/573001234567",
+        "icon": "whatsapp",
+        "active": true
+      }
+    ],
+    "banners": [
+      {
+        "id": "2f1d7540-a62f-47f2-957d-246c2aba88f7",
+        "title": "Nueva Colección Primavera",
+        "subtitle": "Descubre las últimas tendencias",
+        "image": "https://picsum.photos/seed/banner1/1200/400",
+        "url": "/productos",
+        "active": true
+      },
+      {
+        "id": "3c7b4ca8-a77b-48a4-9789-0663311bf317",
+        "title": "Liquidación de Temporada",
+        "subtitle": "Hasta 30% de descuento",
+        "image": "https://picsum.photos/seed/banner2/1200/400",
+        "url": "/ofertas",
+        "active": true
+      }
+    ]
+  }
+]

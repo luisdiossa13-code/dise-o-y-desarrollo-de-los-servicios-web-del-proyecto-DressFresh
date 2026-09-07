@@ -1,0 +1,557 @@
+{
+  "info": {
+    "_postman_id": "tienda-ropa-api-aa5-ev03",
+    "name": "Tienda de Ropa - Moda Trends (AA5 EV03)",
+    "description": "Colecci\u00f3n de servicios REST de la API de tienda de ropa. Proyecto formativo AA5 · Construcci\u00f3n de APIs · Luis Diossa.\n\nVar\u00edables:\n- host: base de la API (http://localhost:3000/api)\n- tokenCliente / tokenAdmin: se llenan autom\u00e1ticamente al ejecutar el paso de login correspondiente\n- productoId, pedidoId, pagoId, pqrsfId, categoriaId: se asignan en los pasos marcados con \"setup\"",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "host", "value": "http://localhost:3000/api", "type": "string" },
+    { "key": "tokenCliente", "value": "", "type": "string" },
+    { "key": "tokenAdmin", "value": "", "type": "string" },
+    { "key": "productoId", "value": "", "type": "string" },
+    { "key": "pedidoId", "value": "", "type": "string" },
+    { "key": "pagoId", "value": "", "type": "string" },
+    { "key": "pqrsfId", "value": "", "type": "string" },
+    { "key": "categoriaId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "00 - Salud y utilidades",
+      "item": [
+        {
+          "name": "Health - Estado de la API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/health", "host": ["{{host}}"], "path": ["health"] }
+          }
+        },
+        {
+          "name": "M\u00e9todos de pago disponibles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/payments/methods", "host": ["{{host}}"], "path": ["payments", "methods"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "01 - Autenticaci\u00f3n",
+      "item": [
+        {
+          "name": "Login Administrador (setup tokenAdmin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.token) { pm.collectionVariables.set('tokenAdmin', json.data.token); console.log('tokenAdmin OK'); }",
+                  "else { console.log('Error login admin: ', json); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@modatrends.com\",\n  \"password\": \"Admin123456\"\n}" },
+            "url": { "raw": "{{host}}/auth/login", "host": ["{{host}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Login Cliente (setup tokenCliente)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.token) { pm.collectionVariables.set('tokenCliente', json.data.token); console.log('tokenCliente OK'); }",
+                  "else { console.log('Error login cliente: ', json); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"cliente@modatrends.com\",\n  \"password\": \"Cliente123456\"\n}" },
+            "url": { "raw": "{{host}}/auth/login", "host": ["{{host}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Registrar cliente",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nuevo Cliente\",\n  \"email\": \"nuevo@correo.com\",\n  \"password\": \"MiClave123\",\n  \"phone\": \"+57 320 000 0000\",\n  \"address\": \"Calle 1 # 1-1\"\n}"
+            },
+            "url": { "raw": "{{host}}/auth/register", "host": ["{{host}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "Perfil autenticado (cliente)",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/auth/me", "host": ["{{host}}"], "path": ["auth", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Cat\u00e1logo (p\u00fablico)",
+      "item": [
+        {
+          "name": "Listar categor\u00edas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/categories?withCount=true", "host": ["{{host}}"], "path": ["categories"] }
+          }
+        },
+        {
+          "name": "Listar productos (setup productoId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.length) { pm.collectionVariables.set('productoId', json.data[0].id); pm.collectionVariables.set('categoriaId', json.data[0].categoryId || ''); console.log('productoId =', json.data[0].id); }",
+                  "else { console.log('Sin productos'); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products?limit=1", "host": ["{{host}}"], "path": ["products"] }
+          }
+        },
+        {
+          "name": "Producto por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products/{{productoId}}", "host": ["{{host}}"], "path": ["products", "{{productoId}}"] }
+          }
+        },
+        {
+          "name": "Productos relacionados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products/related/{{productoId}}", "host": ["{{host}}"], "path": ["products", "related", "{{productoId}}"] }
+          }
+        },
+        {
+          "name": "Marcas disponibles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products/brands", "host": ["{{host}}"], "path": ["products", "brands"] }
+          }
+        },
+        {
+          "name": "Filtrar productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products?q=camiseta&sort=priceAsc&minPrice=30000&maxPrice=70000&page=1&limit=5", "host": ["{{host}}"], "path": ["products"] }
+          }
+        },
+        {
+          "name": "Ofertas vigentes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/offers", "host": ["{{host}}"], "path": ["offers"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Carrito y compra (cliente)",
+      "item": [
+        {
+          "name": "Agregar producto al carrito",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"{{productoId}}\",\n  \"quantity\": 2,\n  \"size\": \"M\",\n  \"color\": \"Negro\"\n}"
+            },
+            "url": { "raw": "{{host}}/cart/items", "host": ["{{host}}"], "path": ["cart", "items"] }
+          }
+        },
+        {
+          "name": "Ver carrito",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/cart", "host": ["{{host}}"], "path": ["cart"] }
+          }
+        },
+        {
+          "name": "Crear pedido / checkout (setup pedidoId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.id) { pm.collectionVariables.set('pedidoId', json.data.id); console.log('pedidoId =', json.data.id); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingAddress\": \"Calle 15 # 20-30, Bogot\u00e1\",\n  \"phone\": \"3001234567\",\n  \"note\": \"Entregar en horas de la tarde\"\n}"
+            },
+            "url": { "raw": "{{host}}/orders", "host": ["{{host}}"], "path": ["orders"] }
+          }
+        },
+        {
+          "name": "Pagar pedido (tarjeta aprobada)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.id) { pm.collectionVariables.set('pagoId', json.data.id); console.log('pagoId =', json.data.id); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"{{pedidoId}}\",\n  \"method\": \"tarjeta\",\n  \"cardNumber\": \"4111111111111111\",\n  \"cardHolder\": \"Cliente Demo\",\n  \"expiry\": \"12/28\",\n  \"cvc\": \"123\"\n}"
+            },
+            "url": { "raw": "{{host}}/payments", "host": ["{{host}}"], "path": ["payments"] }
+          }
+        },
+        {
+          "name": "Mis pedidos",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/orders", "host": ["{{host}}"], "path": ["orders"] }
+          }
+        },
+        {
+          "name": "Mis pagos",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/payments", "host": ["{{host}}"], "path": ["payments"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - PQRSF (cliente)",
+      "item": [
+        {
+          "name": "Crear solicitud PQRSF (setup pqrsfId)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.id) { pm.collectionVariables.set('pqrsfId', json.data.id); pm.collectionVariables.set('radicado', json.data.radicado || ''); console.log('pqrsfId =', json.data.id); }"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipo\": \"reclamo\",\n  \"asunto\": \"Producto lleg\u00f3 con falla\",\n  \"descripcion\": \"El producto lleg\u00f3 con un defecto de f\u00e1brica en la costura.\"\n}"
+            },
+            "url": { "raw": "{{host}}/pqrsf", "host": ["{{host}}"], "path": ["pqrsf"] }
+          }
+        },
+        {
+          "name": "Mis solicitudes PQRSF",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/pqrsf", "host": ["{{host}}"], "path": ["pqrsf"] }
+          }
+        },
+        {
+          "name": "Consultar por radicado",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenCliente}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/pqrsf/radicado/PQR-2026-000001", "host": ["{{host}}"], "path": ["pqrsf", "radicado", "PQR-2026-000001"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Administraci\u00f3n (admin)",
+      "item": [
+        {
+          "name": "Listar productos (todos, incl. inactivos)",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/products/all/admin", "host": ["{{host}}"], "path": ["products", "all", "admin"] }
+          }
+        },
+        {
+          "name": "Crear categor\u00eda",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ropa Interior\",\n  \"slug\": \"ropa-interior\",\n  \"description\": \"Prendas de ropa interior\",\n  \"active\": true\n}"
+            },
+            "url": { "raw": "{{host}}/categories", "host": ["{{host}}"], "path": ["categories"] }
+          }
+        },
+        {
+          "name": "Crear producto",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Camisa Formal Azul\",\n  \"price\": 89900,\n  \"oldPrice\": 105000,\n  \"stock\": 30,\n  \"sizes\": [\"S\", \"M\", \"L\"],\n  \"colors\": [\"Azul\"],\n  \"categoryId\": \"{{categoriaId}}\",\n  \"images\": [\"https://picsum.photos/seed/camisaformal/600/800\"],\n  \"brand\": \"Elegante\",\n  \"active\": true\n}"
+            },
+            "url": { "raw": "{{host}}/products", "host": ["{{host}}"], "path": ["products"] }
+          }
+        },
+        {
+          "name": "Crear oferta global (20%)",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Cyber Day 2026\",\n  \"description\": \"20% en toda la tienda\",\n  \"discountPercent\": 20,\n  \"scopeType\": \"global\"\n}"
+            },
+            "url": { "raw": "{{host}}/offers", "host": ["{{host}}"], "path": ["offers"] }
+          }
+        },
+        {
+          "name": "Listar usuarios",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/users", "host": ["{{host}}"], "path": ["users"] }
+          }
+        },
+        {
+          "name": "Listar todos los pedidos",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/orders/admin-orders", "host": ["{{host}}"], "path": ["orders", "admin-orders"] }
+          }
+        },
+        {
+          "name": "Actualizar estado de pedido (enviado)",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"enviado\"\n}" },
+            "url": { "raw": "{{host}}/orders/{{pedidoId}}/status", "host": ["{{host}}"], "path": ["orders", "{{pedidoId}}", "status"] }
+          }
+        },
+        {
+          "name": "Responder PQRSF",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"respuesta\": \"Estimado cliente, procedemos con el cambio del producto. Gracias por avisarnos.\"\n}"
+            },
+            "url": { "raw": "{{host}}/pqrsf/{{pqrsfId}}/respond", "host": ["{{host}}"], "path": ["pqrsf", "{{pqrsfId}}", "respond"] }
+          }
+        },
+        {
+          "name": "Confirmar pago (contra entrega pendiente)",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{host}}/payments/{{pagoId}}/confirm", "host": ["{{host}}"], "path": ["payments", "{{pagoId}}", "confirm"] }
+          }
+        },
+        {
+          "name": "Reembolsar pago",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{host}}/payments/{{pagoId}}/refund", "host": ["{{host}}"], "path": ["payments", "{{pagoId}}", "refund"] }
+          }
+        },
+        {
+          "name": "Dashboard - Estad\u00edsticas",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/dashboard/stats", "host": ["{{host}}"], "path": ["dashboard", "stats"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - Configuraci\u00f3n y redes sociales",
+      "item": [
+        {
+          "name": "Configuraci\u00f3n p\u00fablica (redes + banners)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{host}}/config", "host": ["{{host}}"], "path": ["config"] }
+          }
+        },
+        {
+          "name": "Actualizar configuraci\u00f3n",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"storeName\": \"Moda Trends\",\n  \"announcement\": \"Env\u00edo gratis por compras superiores a $200.000\"\n}"
+            },
+            "url": { "raw": "{{host}}/config/admin", "host": ["{{host}}"], "path": ["config", "admin"] }
+          }
+        },
+        {
+          "name": "Agregar red social",
+          "auth": {
+            "type": "bearer",
+            "bearer": [{ "key": "token", "value": "{{tokenAdmin}}", "type": "string" }]
+          },
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json", "type": "text" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"LinkedIn\",\n  \"url\": \"https://linkedin.com/company/modatrends\",\n  \"icon\": \"linkedin\",\n  \"active\": true\n}"
+            },
+            "url": { "raw": "{{host}}/config/social", "host": ["{{host}}"], "path": ["config", "social"] }
+          }
+        }
+      ]
+    }
+  ]
+}

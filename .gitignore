@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entorno de desarrollo / IDE
+.vscode/
+.idea/
+*.swp
+
+# Archivos de datos temporales (no se versionan; los semilla sí)
+*.db.json
